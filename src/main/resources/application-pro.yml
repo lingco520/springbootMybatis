@@ -1,0 +1,38 @@
+server:
+  port: 8071
+  context-path: /springbootMybatis
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.0.52:13365/scenic_db?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: scenic_test
+        password: DaqsoftUniver2016!
+        type: com.alibaba.druid.pool.DruidDataSource
+        initialSize: 20
+        minIdle: 20
+        maxActive: 100
+        maxWait: 60000
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 100
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+mybatis:
+  typeAliasesPackage: com.daqsoft.domain
+  mapper-locations: classpath:mapper/*.xml
+  logImpl: STDOUT_LOGGING
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params:
+      count: countSql
+
+logging:
+    level:
+        com.daqsoft.dao: DEBUG
+        com.daqsoft.controller: DEBUG
+    root: INFO
